@@ -65,3 +65,8 @@
    .sidenav {padding-top: 15px;}
    .sidenav a {font-size: 18px;}
  }
+
+ img.avatar{
+   height: 56.88px;
+   width: 65px;
+ }

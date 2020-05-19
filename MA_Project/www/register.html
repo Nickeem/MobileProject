@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
-<!--    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" /> 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Login Page</title>
+    <title>Register an Account</title>
   </head>
   <body class="bg-dark" >
     <div id="mySidenav" class="sidenav k">
@@ -21,9 +21,6 @@
   <a href="#">Feature</a>
 </div>
     <!--Navbar-->
-    <div class="container-sm" id="ttv">
-
-
     <div class="pos-f-t">
     <!--  <div class="collapse" id="navbarToggleExternalContent">
         <div class="bg-dark p-4">
@@ -37,28 +34,40 @@
       </button>
       </nav>
     </div>
+    <div class="container-sm d-flex justify-content-center" id="ttv">
+
+
+
 
     <!-- form -->
-    <div class=" d-flex justify-content-center">
-      <form method="post">
-		    <div class="avatar">
-		    	<img src="img/avatar.png" class="avatar rounded mx-auto d-block" alt="Avatar">
-	    	</div>
-        <h2 class="text-center text-light">Login</h2>
-        <div class="form-group">
-        	<input type="text" class="form-control" name="username" placeholder="Username" required="required">
-        </div>
-		    <div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
-        </div>
-		    <div class="clearfix">
-        <!--    <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
-            <a href="#" class="pull-right">Forgot Password?</a> -->
-        </div>
+    <div class="col-sm-3 ">
+    <form method="post">
+		<h2 class="text-center text-light">Register</h2>
+		<p class="text-center text-light">Create your account. It's free and only takes a minute.</p>
+    <div class="form-group">
+      <input type="text" class="form-control" name="first_name" id="fname" placeholder="First Name" required="required">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" name="last_name" id="lname" placeholder="Last Name" required="required">
+    </div>
+    <div class="form-group">
+        	<input type="email" class="form-control" name="text" id="username" placeholder="Username" required="required">
+    </div>
+		<div class="form-group">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="required">
+    </div>
+		<div class="form-group">
+            <input type="password" class="form-control" name="confirm_password" id="c_password" placeholder="Confirm Password" required="required">
+    </div>
+    <div class="form-group">
+			<label class="text-center text-light checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+		</div>
+		<div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="Register(); return false">Register Now</button>
+    </div>
     </form>
+	  <div class="text-center text-light">Already have an account? <a href="login.html">Sign in</a></div>
+
 
     </div>
     <!-- End of Form -->

@@ -50,12 +50,33 @@ var app = {
 
 /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
 function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-  document.getElementById("ttv").style.marginLeft = "250px";
+  document.getElementById("mySidenav").style.width = "200px";
+//  document.getElementById("ttv").style.marginLeft = "250px";
 }
 
 /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
-  document.getElementById("ttv").style.marginLeft = "0";
+  //document.getElementById("ttv").style.marginLeft = "0";
+}
+
+function Register() {
+  var first_name = document.getElementById('fname').value;
+  var last_name = document.getElementById('lname').value;
+  var username = document.getElementById('username').value;
+  //if ((document.getElementById('password').value) == (document.getElementById('c_password').value)) {
+    password = document.getElementById('password').value;
+  //}
+  var db = PouchDB('http://localhost:5984/test');
+
+  db.put({
+  _id: username,
+  FirstName: first_name,
+  LastName: last_name,
+  Password: password
+}, function(err, response) {
+  if (err) { return console.log(err); }
+  // handle response
+});
+
 }

@@ -6,17 +6,19 @@
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" />
+<!--    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Login Page</title>
   </head>
   <body class="bg-dark" >
-    <div id="mySidenav" class="sidenav">
+    <div id="mySidenav" class="sidenav k">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
+  <a href="home.html">Home</a>
+  <a href="update.html">Update Profile</a>
+  <a href="inputgoals.html">Input Savings Goals</a>
+  <a href="viewall.html">View All Goals</a>
+  <a href="calc.html">Percentage Calculator</a>
+  <a href="#">Feature</a>
 </div>
     <!--Navbar-->
     <div class="container-sm" id="ttv">
@@ -35,11 +37,36 @@
       </button>
       </nav>
     </div>
+
+    <!-- form -->
+    <div class=" d-flex justify-content-center">
+      <form method="post">
+		    <div class="avatar">
+		    	<img src="img/avatar.png" class="avatar rounded mx-auto d-block" alt="Avatar">
+	    	</div>
+        <h2 class="text-center text-light">Login</h2>
+        <div class="form-group">
+        	<input type="text" class="form-control" name="username" placeholder="Username" required="required">
+        </div>
+		    <div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+        </div>
+		    <div class="clearfix">
+        <!--    <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+            <a href="#" class="pull-right">Forgot Password?</a> -->
+        </div>
+    </form>
+
+    </div>
+    <!-- End of Form -->
     </div>
 
     <script src="js/jquery-1.9.1.min.js" charset="utf-8"></script>
     <script src="js/pouchdb-7.0.0.min.js" charset="utf-8"></script>
-    <script src="cordova.js"></script>
+
     <script src="js/bootstrap.js" charset="utf-8"></script>
     <script src="js/index.js" charset="utf-8"></script>
     <script type="text/javascript">
