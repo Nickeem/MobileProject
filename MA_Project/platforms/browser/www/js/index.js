@@ -61,12 +61,21 @@ function closeNav() {
 }
 
 function Register() {
+  if (!document.getElementById('fname').value || !document.getElementById('lname').value || !document.getElementById('username').value || !document.getElementById('password').value || !document.getElementById('c_pasword').value) {
+    alert("Form was not filled out correctly")
+    return;
+  }
   var first_name = document.getElementById('fname').value;
   var last_name = document.getElementById('lname').value;
   var username = document.getElementById('username').value;
-  //if ((document.getElementById('password').value) == (document.getElementById('c_password').value)) {
-    password = document.getElementById('password').value;
-  //}
+
+  if ((document.getElementById('password').value) == (document.getElementById('c_password').value)) {
+    var password = document.getElementById('password').value;
+  }
+  else {
+    document.getElementById('invlbl').classList.remove('invisible');
+    return;
+  }
   var db = PouchDB('http://localhost:5984/test');
 
   db.put({
@@ -78,5 +87,24 @@ function Register() {
   if (err) { return console.log(err); }
   // handle response
 });
+
+}
+
+function test() {
+  db  = new PouchDB("test2");
+  db.put({
+  _id: "test",
+  password: "banks",
+}, function(err, response) {
+  if (err) { return console.log(err); }
+  // handle response
+});
+
+db.get('test').then(function (doc) {
+  alert(doc["password"]);
+}).catch(function (err) {
+  console.log(err);
+});
+
 
 }

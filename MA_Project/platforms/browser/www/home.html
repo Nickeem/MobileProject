@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/index.css">
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+<!--    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login Page</title>
+  </head>
+  <body class="bg-dark" >
+    <div id="mySidenav" class="sidenav k">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="home.html">Home</a>
+  <a href="update.html">Update Profile</a>
+  <a href="inputgoals.html">Input Savings Goals</a>
+  <a href="viewall.html">View All Goals</a>
+  <a href="calc.html">Percentage Calculator</a>
+  <a href="#">Feature</a>
+</div>
+    <!--Navbar-->
+    <div class="container-sm">
+      <div class="" id="loggedin">
+        <h1 id="weluser"></h1>
+
+      </div>
+      <div class="" id="notloggedin">
+        <h1>Welcome</h1>
+        <p>It seems ypu are not logged in. Click the button below to log in</p>
+        <button  class="btn btn-primary btn-lg btn-block" onclick="location.href'login.html'">Login</button>
+
+      </div>
+
+
+
+    <!-- End of Form -->
+    </div>
+
+    <script src="js/jquery-1.9.1.min.js" charset="utf-8"></script>
+    <script src="js/pouchdb-7.0.0.min.js" charset="utf-8"></script>
+
+    <script src="js/bootstrap.js" charset="utf-8"></script>
+    <script src="js/index.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      app.initialize()
+    </script>
+  </body>
+</html>

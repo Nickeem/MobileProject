@@ -61,22 +61,86 @@ function closeNav() {
 }
 
 function Register() {
+  if (!document.getElementById('fname').value ||
+   !document.getElementById('lname').value ||
+    !document.getElementById('username').value ||
+     !document.getElementById('password').value ||
+     !document.getElementById('c_password').value) {
+    alert("Form was not filled out correctly");
+    return;
+  }
   var first_name = document.getElementById('fname').value;
   var last_name = document.getElementById('lname').value;
   var username = document.getElementById('username').value;
-  //if ((document.getElementById('password').value) == (document.getElementById('c_password').value)) {
-    password = document.getElementById('password').value;
-  //}
-  var db = PouchDB('http://localhost:5984/test');
+
+  if ((document.getElementById('password').value) == (document.getElementById('c_password').value)) {
+    var password = document.getElementById('password').value;
+  }
+  else {
+    document.getElementById('errlbl').innerHTML = 'Passwords do not match';
+    return;
+  }
+  var db = PouchDB('test');
 
   db.put({
   _id: username,
+  username: username,
   FirstName: first_name,
   LastName: last_name,
   Password: password
 }, function(err, response) {
-  if (err) { return console.log(err); }
-  // handle response
+  if (err) {
+    if (err["status"] == "409") {
+      console.log("Dupe :b");
+      document.getElementById('errlbl').innerHTML = 'The username you want to use is already in use';
+    }
+    return console.log(err); }
+  console.log("dupe?");
 });
+
+}
+
+function Login() {
+  db  = PouchDB("test");
+  document.getElementById('errlbl').innerHTML = "";
+  var username = document.getElementById('username').value;
+  var password = document.getElementById('password').value;
+  if (username == "") {
+    alert('username field empty');
+  }
+//  console.log(username);
+  db.get(username).then(function (doc) {
+     if (doc['password'] != password) {
+       document.getElementById('errlbl').innerHTML = "Password entered is incorrect"
+       document.getElementById('password').value = "";
+     }
+     else if (doc['password'] == password) {
+         localStorage.setItem("f_name", doc["FirstName"]);
+         localStorage.setItem("l_name", doc["LastName"]);
+         localStorage.setItem("username", doc["username"]);
+         location.href = "home.html"
+
+     }
+  }).catch(function (err) {
+    console.log(err);
+    if (err['status'] == "404") {
+      document.getElementById('errlbl').innerHTML = "Username entered is incorrect";
+      document.getElementById('username').value = "";
+      document.getElementById('password').value = "";
+}
+});
+
+
+}
+
+function forlater() {
+  function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
 
 }
