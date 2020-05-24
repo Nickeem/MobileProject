@@ -8,9 +8,9 @@
     <meta name="msapplication-tap-highlight" content="no" />
 <!--    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Login Page</title>
+    <title>Home</title>
   </head>
-  <body class="bg-dark" >
+  <body class="bg-dark" onload="homeload()" >
     <div id="mySidenav" class="sidenav k">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="home.html">Home</a>
@@ -23,13 +23,12 @@
     <!--Navbar-->
     <div class="container-sm">
       <div class="" id="loggedin">
-        <h1 id="weluser"></h1>
-
+        <h1 id="wel_user"></h1>
       </div>
-      <div class="" id="notloggedin">
+      <div class="text-light" id="notloggedin">
         <h1>Welcome</h1>
         <p>It seems ypu are not logged in. Click the button below to log in</p>
-        <button  class="btn btn-primary btn-lg btn-block" onclick="location.href'login.html'">Login</button>
+        <button  class="btn btn-primary btn-lg" onclick="location.href'login.html'">Login</button>
 
       </div>
 

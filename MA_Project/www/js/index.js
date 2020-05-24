@@ -118,7 +118,8 @@ function Login() {
          localStorage.setItem("f_name", doc["FirstName"]);
          localStorage.setItem("l_name", doc["LastName"]);
          localStorage.setItem("username", doc["username"]);
-         location.href = "home.html"
+         localStorage.setItem("loggedin", "yes");
+         location.href = "home.html";
 
      }
   }).catch(function (err) {
@@ -142,5 +143,22 @@ function forlater() {
     x.style.display = "none";
   }
 }
+
+}
+
+function homeload() {
+  var x = document.getElementById("loggedin");
+  var y = document.getElementById("notloggedin");
+  if (localStorage.getItem("loggedin") == "yes") {
+    document.getElementById('wel_user').innerHTML = "Welcome "+ localStorage.getItem("username");
+    y.style.display = "none";
+  }else {
+    x.style.display = "none";
+  }
+
+}
+
+function SaveGoal() {
+
 
 }
