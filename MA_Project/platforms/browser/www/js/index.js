@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -110,16 +111,16 @@ function Login() {
   }
 //  console.log(username);
   db.get(username).then(function (doc) {
-     if (doc['password'] != password) {
+     if (doc['Password'] != password) {
        document.getElementById('errlbl').innerHTML = "Password entered is incorrect"
        document.getElementById('password').value = "";
      }
-     else if (doc['password'] == password) {
+     else if (doc['Password'] == password) {
          localStorage.setItem("f_name", doc["FirstName"]);
          localStorage.setItem("l_name", doc["LastName"]);
          localStorage.setItem("username", doc["username"]);
          localStorage.setItem("loggedin", "yes");
-         location.href = "home.html"
+         location.href = "home.html";
 
      }
   }).catch(function (err) {
@@ -154,6 +155,42 @@ function homeload() {
     y.style.display = "none";
   }else {
     x.style.display = "none";
+  }
+
+}
+
+function SaveGoal() {
+
+
+}
+
+function Days(value) {
+//  var month = document.getElementById('months').value;
+  var defaultmonth = 2020;
+  options = document.getElementById('days');
+  options.innerHTML ="";
+  if (!document.getElementById('years')) {
+    var year = defaultmonth;
+  } else {
+    var year = document.getElementById('years');
+  }
+  if (value=="Jan" || value=="Mar" || value=="May" || value=="Jul" || value=="Aug" || value=="Oct" || value=="Dec") {
+    for (var i = 1; i <= 31; i++) {
+        var row = document.createElement("option");
+        var rowtext = document.createTextNode(i);
+        row.appendChild(rowtext);
+        options.appendChild(row);
+  }
+}
+  else if (value=="Apr" || value=="Jun" || value== "Sep" || value == "Nov") {
+    for (var i = 1; i <= 30; i++) {
+        var row = document.createElement("option");
+        var rowtext = document.createTextNode(i);
+        row.appendChild(rowtext);
+        options.appendChild(row);
+  }
+
+
   }
 
 }
