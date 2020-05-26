@@ -10,7 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Input Savings Goal</title>
   </head>
-  <body class="bg-dark" >
+
+  <body class="bg-dark" onload="load()">
     <div id="mySidenav" class="sidenav k">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="home.html">Home</a>
@@ -55,7 +56,7 @@
         	<input type="text" class="form-control" name="text" id="C_savings" placeholder="Current Savings" required="required">
     </div>
 		<div class="form-group">
-      <select class="custom-select " id="">
+      <select class="custom-select " id="Gtype">
         <option value="" disabled selected>Choose a type of goal</option>
         <option value="Personal">Personal</option>
         <option value="Business">Business</option>
@@ -91,8 +92,8 @@
 
               </div>
               <div class="col">
-                <select class="custom-select " id="years">
-                  <option value="" disabled selected>Year</option>
+                <select class="custom-select " onchange="yearchanged()" id="years">
+                  <option value="year"  disabled selected>Year</option>
                   <option value=2020>2020</option>
                   <option value=2021>2021</option>
                   <option value=2022>2022</option>
@@ -106,9 +107,10 @@
             </div>
     </div>
     <div class="form-group">
-      <select class="custom-select ">
+      <select class="custom-select" id="completed">
         <option value="No" selected>No</option>
         <option value="Yes">Yes</option>
+      </select>
     </div>
     <div class="form-group">
 			<label class="text-center text-danger checkbox-inline "id="errlbl">  </label>

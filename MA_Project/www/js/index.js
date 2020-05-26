@@ -88,7 +88,8 @@ function Register() {
   username: username,
   FirstName: first_name,
   LastName: last_name,
-  Password: password
+  Password: password,
+  Goals: []
 }, function(err, response) {
   if (err) {
     if (err["status"] == "409") {
@@ -98,6 +99,7 @@ function Register() {
     return console.log(err); }
   console.log("dupe?");
 });
+//location.href = "login.html";
 
 }
 
@@ -120,7 +122,7 @@ function Login() {
          localStorage.setItem("l_name", doc["LastName"]);
          localStorage.setItem("username", doc["username"]);
          localStorage.setItem("loggedin", "yes");
-         location.href = "home.html";
+         location.href = "inputgoals.html";
 
      }
   }).catch(function (err) {
@@ -160,19 +162,43 @@ function homeload() {
 }
 
 function SaveGoal() {
+  db  = PouchDB("test");
+  var goalname = document.getElementById('Gname').value;
+  var goalamount = document.getElementById('Gamount').value;
+  var savings = document.getElementById('C_savings').value;
+  var goaltype = document.getElementById('Gtype').value;
+  var goaldate = document.getElementById('months').value +" "+document.getElementById('days').value + " " + document.getElementById('years').value;
+  var completed = document.getElementById('completed').value;
 
+  var goal = [goalname, goalamount, savings, goaltype, goaldate, completed];
+
+  var username = localStorage.getItem("username");
+
+  db.get(username).then(function (doc) {
+  // update their age
+  doc.Goals.push(goal);
+  // put them back
+  return db.put(doc);
+}).then(function () {
+  // fetch mittens again
+  return db.get(username);
+}).then(function (doc) {
+  console.log(doc);
+});
 
 }
 
 function Days(value) {
 //  var month = document.getElementById('months').value;
-  var defaultmonth = 2020;
+  var defaultyear= 2020;
   options = document.getElementById('days');
   options.innerHTML ="";
-  if (!document.getElementById('years')) {
-    var year = defaultmonth;
-  } else {
-    var year = document.getElementById('years');
+  if (document.getElementById('years').value == "year") {
+    document.getElementById('years').selectedIndex = "1";
+    var year = document.getElementById('years').value;
+  }
+  else {
+    var year = document.getElementById('years').value;
   }
   if (value=="Jan" || value=="Mar" || value=="May" || value=="Jul" || value=="Aug" || value=="Oct" || value=="Dec") {
     for (var i = 1; i <= 31; i++) {
@@ -192,5 +218,64 @@ function Days(value) {
 
 
   }
+  else if (value=="Feb") {
+    if (parseInt(year)%4 == 0 ) {
+      for (var i = 1; i <=29 ; i++) {
+          var row = document.createElement("option");
+          var rowtext = document.createTextNode(i);
+          row.appendChild(rowtext);
+          options.appendChild(row);
+    }
+    }
+  } if (parseInt(year)%4 != 0 ){
+    for (var i = 1; i <=28 ; i++) {
+        var row = document.createElement("option");
+        var rowtext = document.createTextNode(i);
+        row.appendChild(rowtext);
+        options.appendChild(row);
+  }}
+
+}
+
+function yearchanged() {
+  var month = document.getElementById('months').value;
+  Days(month);
+}
+
+function load() {
+  x = document.getElementById('errlbl');
+  x.style.display = "none";
+  if (!localStorage.getItem("username") ) {
+    location.href = "login.html";
+  }
+}
+
+function viewgoal() {
+  db  = PouchDB("test");
+  body = document.getElementById('tbody');
+  body.innerHTML = "";
+  var username = localStorage.getItem('username');
+  var content;
+
+  db.get(username, function(err, doc) {
+  if (err) { return console.log(err); }
+
+     content = doc["Goals"];
+     console.log(content.length);
+     for (var i = 0; i < content.length; i++) {
+         var row = document.createElement("tr");
+         var rowdata = content[i];
+         console.log(i);
+         for (var j = 0; j < rowdata.length; j++) {
+            //  console.log(i);
+              var rowtd = document.createElement('td');
+              var rowtext = document.createTextNode(rowdata[j]);
+              rowtd.appendChild(rowtext);
+              row.appendChild(rowtd);
+         }
+         body.appendChild(row);
+     }
+});
+
 
 }
