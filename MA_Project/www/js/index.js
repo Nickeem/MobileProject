@@ -175,7 +175,7 @@ function SaveGoal() {
   var username = localStorage.getItem("username");
 
   db.get(username).then(function (doc) {
-  // update their age
+  // update their document
   doc.Goals.push(goal);
   // put them back
   return db.put(doc);
@@ -277,5 +277,46 @@ function viewgoal() {
      }
 });
 
+
+}
+
+function Calculate() {
+  document.getElementById('notfilled').innerHTML = "";
+  document.getElementById('not1').innerHTML = "";
+  document.getElementById('not2').innerHTML = "";
+  var amount = document.getElementById('amount').value;
+  var percent = document.getElementById('percent').value;
+
+  if (!amount || !percent) {
+    document.getElementById('notfilled').innerHTML = "Fields not filled out properly";
+    return;
+  }else {
+
+
+  if (isNaN(parseFloat(amount))) {
+    document.getElementById('not1').innerHTML = "This is not a number";
+    return;
+  }
+  if (isNaN(parseFloat(percent))) {
+    document.getElementById('not2').innerHTML = "This is not a number";
+    return;
+  }
+}
+  amount = parseFloat(amount);
+  percent = parseFloat(percent);
+
+  var result = amount * (percent/100);
+  console.log(result);
+  document.getElementById('C_amount').value = result;
+
+}
+
+function Clear() {
+  document.getElementById('notfilled').innerHTML = "";
+  document.getElementById('not1').innerHTML = "";
+  document.getElementById('not2').innerHTML = "";
+  document.getElementById('amount').value = "";
+  document.getElementById('percent').value = "";
+  document.getElementById('C_amount').value = "";
 
 }
