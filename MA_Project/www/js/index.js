@@ -444,8 +444,9 @@ function updateprofile() {
 
 
 }
-/* -------------------------Calendar----------------------- */
-
+/* -------------------------Calendar-----------------------
+Credit - https://medium.com/@nitinpatel_20236/challenge-of-building-a-calendar-with-pure-javascript-a86f1303267d
+*/
 /*
 today = new Date();
 currentMonth = today.getMonth();
