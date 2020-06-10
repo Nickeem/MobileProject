@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
-<!--  <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+  <!--  <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Register an Account</title>
+    <title>Update Profile</title>
   </head>
-  <body class="bg-dark" >
+  <body class="bg-dark" onload="notloggedin()" >
     <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="home.html">Home</a>
@@ -22,6 +22,9 @@
   <a onclick="logout()" href="login.html">Logout</a>
 </div>
     <!--Navbar-->
+    <div class="container-sm" >
+
+
     <div class="pos-f-t">
     <!--  <div class="collapse" id="navbarToggleExternalContent">
         <div class="bg-dark p-4">
@@ -36,42 +39,42 @@
       <h3 class="text-primary">Savings Goals</h3>
       </nav>
     </div>
-    <div class="container-sm d-flex justify-content-center" id="ttv">
-
-
-
 
     <!-- form -->
-    <div class="col-sm-3 ">
-    <form method="post">
-		<h2 class="text-center text-light">Register</h2>
-		<p class="text-center text-light">Create your account. It's free and only takes a minute.</p>
-    <div class="form-group">
-      <input type="text" class="form-control" name="first_name" id="fname" placeholder="First Name" required="required">
-    </div>
-    <div class="form-group">
-      <input type="text" class="form-control" name="last_name" id="lname" placeholder="Last Name" required="required">
-    </div>
-    <div class="form-group">
-        	<input type="text" class="form-control" name="text" id="username" placeholder="Username" required="required">
-    </div>
-		<div class="form-group">
-            <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="required">
-    </div>
-		<div class="form-group">
-            <input type="password" class="form-control" name="confirm_password" id="c_password" placeholder="Confirm Password" required="required">
-    </div>
-    <div class="form-group">
-			<label class="text-center text-danger checkbox-inline "id="errlbl">  </label>
-		</div>
-		<div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="Register(); return false">Register Now</button>
-    </div>
+    <div class=" d-flex justify-content-center">
+      <form >
+		    <div class="avatar">
+		    	<img src="img/avatar.png" class="avatar rounded mx-auto d-block" alt="Avatar">
+	    	</div>
+        <h2 class="text-center text-light">Update Profile</h2>
+        <div class="form-group">
+        	<input type="text" class="form-control" name="username" id="cvalue" placeholder="" >
+        </div>
+
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+
+          <label class="btn btn-secondary active" onclick="check1();">
+            <input type="radio" name="options" id="fname" autocomplete="off" checked> First Name
+          </label>
+
+          <label class="btn btn-secondary" onclick="check2()">
+            <input type="radio" name="options" id="lname" autocomplete="off"> Lastname
+          </label>
+
+          <label class="btn btn-secondary" onclick="check3()">
+            <input type="radio" name="options" id="password" autocomplete="off"> Password
+          </label>
+       </div>
+
     </form>
-	  <div class="text-center text-light">Already have an account? <a href="login.html">Sign in</a></div>
+
 
 
     </div>
+    <br>
+    <div class=" d-flex justify-content-center">
+    <button type="button" class="btn btn-outline-danger" onclick="updateprofile()">Update</button>
+  </div>
     <!-- End of Form -->
     </div>
 
@@ -81,7 +84,7 @@
     <script src="js/bootstrap.js" charset="utf-8"></script>
     <script src="js/index.js" charset="utf-8"></script>
     <script type="text/javascript">
-      app.initialize();
+      app.initialize()
     </script>
   </body>
 </html>

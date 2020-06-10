@@ -10,28 +10,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Home</title>
   </head>
-  <body class="bg-dark" onload="homeload()" >
-    <div id="mySidenav" class="sidenav k">
+  <body class="bg-dark" onload="notloggedin();homeload()" >
+    <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="home.html">Home</a>
   <a href="update.html">Update Profile</a>
   <a href="inputgoals.html">Input Savings Goals</a>
   <a href="viewall.html">View All Goals</a>
   <a href="calc.html">Percentage Calculator</a>
-  <a href="#">Feature</a>
+  <a href="calendar.html">Calendar</a>
+  <a onclick="logout()" href="login.html">Logout</a>
 </div>
     <!--Navbar-->
     <div class="container-sm ">
-      <div class="" id="loggedin">
+      <div class="pos-f-t">
+       <nav class="navbar navbar-dark bg-dark ">
+        <button class="navbar-toggler" type="button" onclick="openNav()" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <h3 class="text-primary">Savings Goals</h3>
+        </nav>
+      </div>
+
+      <div class="text-light text-center" id="loggedin">
         <h1 id="wel_user"></h1>
       </div>
-      <div class="text-light" id="notloggedin">
-        <h1>Welcome</h1>
-        <p>It seems ypu are not logged in. Click the button below to log in</p>
-        <button  class="btn btn-primary btn-lg" onclick="location.href'login.html'">Login</button>
 
+      <div class="card border-info mb-3 bg-dark w-100">
+        <div class="card-header text-info">Update Profile</div>
+          <div class="card-body text-info">
+            <h5 class="card-title">Update your first name, last name or passwword</h5>
+            <div class="text-center">
+              <a href="update.html" class="btn btn-info">Update Profile</a>
+            </div>
+          </div>
       </div>
 
+      <div class="card border-info mb-3 bg-dark w-100">
+        <div class="card-header text-info">Input Goals</div>
+          <div class="card-body text-info">
+            <h5 class="card-title">Input goal you want to reach in the future. It could be personal, business, down paymen or debt paid off</h5>
+            <div class="text-center">
+              <a href="inputgoals.html" class="btn btn-info">Input Goals</a>
+            </div>
+          </div>
+      </div>
+
+      <div class="card border-info mb-3 bg-dark w-100">
+        <div class="card-header text-info">View All Goals</div>
+          <div class="card-body text-info">
+            <h5 class="card-title">View all goals you entered</h5>
+            <div class="text-center">
+              <a href="viewall.html" class="btn btn-info">View All Goals</a>
+            </div>
+          </div>
+      </div>
+
+      <div class="card border-info mb-3 bg-dark w-100">
+        <div class="card-header text-info">Calculator</div>
+          <div class="card-body text-info">
+            <h5 class="card-title">Calculate a percentage of any amount</h5>
+            <div class="text-center">
+              <a href="calc.html" class="btn btn-info">Calculator</a>
+            </div>
+          </div>
+      </div>
 
 
     <!-- End of Form -->

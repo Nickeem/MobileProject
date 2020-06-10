@@ -10,15 +10,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Percentage Calculator</title>
   </head>
-  <body class="bg-dark" >
-    <div id="mySidenav" class="sidenav k ">
+  <body class="bg-dark" onload="notloggedin()">
+    <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="home.html">Home</a>
   <a href="update.html">Update Profile</a>
   <a href="inputgoals.html">Input Savings Goals</a>
   <a href="viewall.html">View All Goals</a>
   <a href="calc.html">Percentage Calculator</a>
-  <a href="#">Feature</a>
+  <a href="calendar.html">Calendar</a>
+  <a onclick="logout()" href="login.html">Logout</a>
 </div>
     <!--Navbar-->
     <div class="container-sm" id="ttv">
@@ -35,10 +36,15 @@
       <button class="navbar-toggler" type="button" onclick="openNav()" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <h3 class="text-primary">Savings Goals</h3>
       </nav>
+
 
     </div>
     <h2 class="text-center text-light">Percentage Calculator</h2>
+    <div class="container">
+
+
     <div class="form-group">
       <div class="col-xs-4">
         <input type="text" name="" id="amount" placeholder="Amount"><span class="text-danger" id="not1"></span>
@@ -56,6 +62,8 @@
       </div>
       <span class="text-danger" id="notfilled"></span>
 
+
+    </div>
     </div>
 
     <script src="js/jquery-1.9.1.min.js" charset="utf-8"></script>
