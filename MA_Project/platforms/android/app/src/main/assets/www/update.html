@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
-  <!--  <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" /> 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Update Profile</title>
   </head>
-  <body class="bg-dark" onload="notloggedin();upload()" >
+  <body class="bg-dark" onload="notloggedin()" >
     <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="home.html">Home</a>
@@ -70,22 +70,10 @@
 
 
 
-
     </div>
     <br>
     <div class=" d-flex justify-content-center">
     <button type="button" class="btn btn-outline-danger" onclick="updateprofile()">Update</button>
-  </div>
-  <br><br>
-  <div class="text-center text-info">
-    <h2 id="ufn"></h2><br>
-    <h2 id="uln"></h2><br>
-    <label for="upw"> <input type="password" id="upw" value=""> </label>
-
-    <div class=" d-flex justify-content-center">
-    <button type="button" class="btn btn-outline-primary" onclick="showupw()">Show Password</button>
-  </div>
-
   </div>
     <!-- End of Form -->
     </div>

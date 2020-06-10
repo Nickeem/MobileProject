@@ -6,11 +6,12 @@
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
-    <!--<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" /> 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Percentage Calculator</title>
+    <title>View All Goals</title>
   </head>
-  <body class="bg-dark" onload="notloggedin()">
+
+  <body class="bg-dark" onload="notloggedin();viewgoal()">
     <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="home.html">Home</a>
@@ -22,48 +23,42 @@
   <a onclick="logout()" href="login.html">Logout</a>
 </div>
     <!--Navbar-->
-    <div class="container-sm" id="ttv">
-
-
     <div class="pos-f-t">
-    <!--  <div class="collapse" id="navbarToggleExternalContent">
-        <div class="bg-dark p-4">
-          <h4 class="text-white">Collapsed content</h4>
-          <span class="text-muted">Toggleable via the navbar brand.</span>
-       </div>
-     </div> -->
+
      <nav class="navbar navbar-dark bg-dark ">
       <button class="navbar-toggler" type="button" onclick="openNav()" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <h3 class="text-primary">Savings Goals</h3>
       </nav>
-
-
     </div>
-    <h2 class="text-center text-light">Percentage Calculator</h2>
-    <div class="container">
+    <div class="container-sm d-flex justify-content-center" id="ttv">
+      <div class="table-responsive">
 
+      <table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Goal Name</th>
+      <th scope="col">Goal Amount</th>
+      <th scope="col">Current Savings</th>
+      <th scope="col">Type</th>
+      <th scope="col">Goal Date</th>
+      <th scope="col">Completed</th>
+    </tr>
+  </thead>
+  <tbody id="tbody">
+    <!--
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr> -->
 
-    <div class="form-group">
-      <div class="col-xs-4">
-        <input type="text" name="" id="amount" placeholder="Amount"><span class="text-danger" id="not1"></span>
-        <br>
-        <br>
-        <span class="text-light"><input type="text" name="" id="percent" placeholder="Percentage">% </span><span class="text-danger" id="not2"></span>
-        <br>
-        <br>
-        <span class="text-light">Calculated Amount:<input type="text" name="" id="C_amount" placeholder="Calculated Amount"></span>
-      </div>
-      <br>
-      <div class="form-group">
-          <button  class="btn btn-primary btn-lg btn-block" onclick="Calculate(); return false">Calculate</button>
-          <button  class="btn btn-primary btn-lg btn-block" onclick="Clear(); return false">Clear</button>
-      </div>
-      <span class="text-danger" id="notfilled"></span>
-
-
-    </div>
+  </tbody>
+</table>
+</div>
     </div>
 
     <script src="js/jquery-1.9.1.min.js" charset="utf-8"></script>
@@ -72,7 +67,7 @@
     <script src="js/bootstrap.js" charset="utf-8"></script>
     <script src="js/index.js" charset="utf-8"></script>
     <script type="text/javascript">
-      app.initialize()
+      app.initialize();
     </script>
   </body>
 </html>

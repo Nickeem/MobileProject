@@ -6,19 +6,21 @@
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
-  <!--  <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" /> 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Input Savings Goal</title>
   </head>
-  <body class="bg-dark" >
-    <div id="mySidenav" class="sidenav k">
+
+  <body class="bg-dark" onload="notloggedin();load()">
+    <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="home.html">Home</a>
   <a href="update.html">Update Profile</a>
   <a href="inputgoals.html">Input Savings Goals</a>
   <a href="viewall.html">View All Goals</a>
   <a href="calc.html">Percentage Calculator</a>
-  <a href="#">Feature</a>
+  <a href="calendar.html">Calendar</a>
+  <a onclick="logout()" href="login.html">Logout</a>
 </div>
     <!--Navbar-->
     <div class="pos-f-t">
@@ -32,6 +34,7 @@
       <button class="navbar-toggler" type="button" onclick="openNav()" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <h3 class="text-primary">Savings Goals</h3>
       </nav>
     </div>
     <div class="container-sm d-flex justify-content-center" id="ttv">
@@ -55,7 +58,7 @@
         	<input type="text" class="form-control" name="text" id="C_savings" placeholder="Current Savings" required="required">
     </div>
 		<div class="form-group">
-      <select class="custom-select " id="">
+      <select class="custom-select " id="Gtype">
         <option value="" disabled selected>Choose a type of goal</option>
         <option value="Personal">Personal</option>
         <option value="Business">Business</option>
@@ -91,8 +94,8 @@
 
               </div>
               <div class="col">
-                <select class="custom-select " id="years">
-                  <option value="" disabled selected>Year</option>
+                <select class="custom-select " onchange="yearchanged()" id="years">
+                  <option value="year"  disabled selected>Year</option>
                   <option value=2020>2020</option>
                   <option value=2021>2021</option>
                   <option value=2022>2022</option>
@@ -106,9 +109,10 @@
             </div>
     </div>
     <div class="form-group">
-      <select class="custom-select ">
+      <select class="custom-select" id="completed">
         <option value="No" selected>No</option>
         <option value="Yes">Yes</option>
+      </select>
     </div>
     <div class="form-group">
 			<label class="text-center text-danger checkbox-inline "id="errlbl">  </label>

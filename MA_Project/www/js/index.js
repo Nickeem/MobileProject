@@ -82,7 +82,7 @@ function Register() {
     return;
   }
   var db = PouchDB('test');
-
+//store information in PouchDB database
   db.put({
   _id: username,
   username: username,
@@ -147,6 +147,26 @@ function forlater() {
     x.style.display = "none";
   }
 }
+
+}
+function showupw() {
+  var x = document.getElementById("upw");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+
+}
+
+function upload() {
+  db = PouchDB("test");
+  username = localStorage.getItem("username");
+  db.get(username).then(function (doc) {
+  document.getElementById('ufn').innerHTML = doc.FirstName;
+  document.getElementById('uln').innerHTML = doc.LastName;
+  document.getElementById('upw').value = doc.Password;
+});
 
 }
 
@@ -235,13 +255,14 @@ function Days(value) {
           row.appendChild(rowtext);
           options.appendChild(row);
     }
-    }
-  } if (parseInt(year)%4 != 0 ){
+  }
+  else if (parseInt(year)%4 != 0 ){
     for (var i = 1; i <=28 ; i++) {
         var row = document.createElement("option");
         var rowtext = document.createTextNode(i);
         row.appendChild(rowtext);
         options.appendChild(row);
+      }
   }}
 
 }
@@ -384,6 +405,7 @@ function updateprofile() {
   console.log(doc);
   alert("First name changed");
   document.getElementById('cvalue').value = "";
+  location.reload();
 });
   }
 
@@ -400,6 +422,7 @@ function updateprofile() {
   console.log(doc);
   alert("Last name changed");
   document.getElementById('cvalue').value = "";
+  location.reload();
 });
   }
   if (password) {
@@ -415,8 +438,10 @@ function updateprofile() {
   console.log(doc);
   alert("Password changed");
   document.getElementById('cvalue').value = "";
+  location.reload();
 });
   }
+
 
 }
 /* -------------------------Calendar----------------------- */
