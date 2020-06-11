@@ -8,7 +8,7 @@
     <meta name="msapplication-tap-highlight" content="no" />
     <!--<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Input Savings Goal</title>
+    <title>Add Event</title>
   </head>
 
   <body class="bg-dark" onload="notloggedin();load()">
@@ -20,7 +20,6 @@
   <a href="viewall.html">View All Goals</a>
   <a href="calc.html">Percentage Calculator</a>
   <a href="calendar.html">Calendar</a>
-  <a href="addevent.html">Add Event</a>
   <a onclick="logout()" href="login.html">Logout</a>
 </div>
     <!--Navbar-->
@@ -50,25 +49,12 @@
 	<!--	<p class="text-center text-light">Create your account. It's free and only takes a minute.</p> -->
   <br>
     <div class="form-group">
-      <input type="text" class="form-control" name="first_name" id="Gname" placeholder="Goal Name" required="required">
+      <input type="text" class="form-control" name="first_name" id="evname" placeholder="Event Name" required="required">
     </div>
-    <div class="form-group">
-      <input type="text" class="form-control" name="last_name" id="Gamount" placeholder="Goal Amount" required="required">
-    </div>
-    <div class="form-group">
-        	<input type="text" class="form-control" name="text" id="C_savings" placeholder="Current Savings" required="required">
-    </div>
+
+
 		<div class="form-group">
-      <select class="custom-select " id="Gtype">
-        <option value="" disabled selected>Choose a type of goal</option>
-        <option value="Personal">Personal</option>
-        <option value="Business">Business</option>
-        <option value="Down Payment">Down Payment</option>
-        <option value="Debt Paid Off">Debt Paid Off</option>
-      </select>
-    </div>
-		<div class="form-group">
-      <label class="text-light">Enter Date Due </label>
+      <label class="text-light">Enter Date </label>
             <div class="row">
               <div class="col">
                 <select class="custom-select " id="months" onchange="Days(value);">
@@ -109,17 +95,12 @@
 
             </div>
     </div>
-    <div class="form-group">
-      <select class="custom-select" id="completed">
-        <option value="No" selected>No</option>
-        <option value="Yes">Yes</option>
-      </select>
-    </div>
+
     <div class="form-group">
 			<label class="text-center text-danger checkbox-inline "id="errlbl">  </label>
 		</div>
 		<div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="SaveGoal(); return false">Save Goal</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="SaveEvent(); return false">Save Event</button>
     </div>
     </form>
 

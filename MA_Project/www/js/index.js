@@ -89,7 +89,8 @@ function Register() {
   FirstName: first_name,
   LastName: last_name,
   Password: password,
-  Goals: []
+  Goals: [],
+  Events: []
 }, function(err, response) {
   if (err) {
     if (err["status"] == "409") {
@@ -98,6 +99,7 @@ function Register() {
     }
     return console.log(err); }
   console.log("dupe?");
+  alert('Profile Registered Sucessfully');
   location.href = "login.html";
 });
 //location.href = "login.html";
@@ -182,11 +184,19 @@ function SaveGoal() {
   var goaltype = document.getElementById('Gtype').value;
   var goaldate = document.getElementById('months').value +" "+document.getElementById('days').value + " " + document.getElementById('years').value;
   var completed = document.getElementById('completed').value;
+  const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2
+})
 
-  if (!goalname || !goalamount || !savings || !goaltype || !goaldate || isNaN(parseInt(goalamount))) {
-    alert("Fields not filled out properly");
+
+  if (!goalname || !goalamount || !savings || !goaltype || !goaldate || isNaN(parseFloat(goalamount))) {
+    document.getElementById('errlbl').innerHTML ="Form not filled out correctly";
     return;
   }
+  savings = formatter.format(parseFloat(savings))
+  goalamount = formatter.format(parseFloat(goalamount))
 
   var goal = [goalname, goalamount, savings, goaltype, goaldate, completed];
 
@@ -212,6 +222,40 @@ function SaveGoal() {
   document.getElementById('years').selectedIndex = 0;
   document.getElementById('completed').selectedIndex = 0;
 
+
+});
+
+}
+function SaveEvent() {
+  db  = PouchDB("test");
+  var evname = document.getElementById('evname').value;
+
+  var evdate = document.getElementById('months').value +" "+document.getElementById('days').value + " " + document.getElementById('years').value;
+
+  if (!evname || !evdate) {
+    document.getElementById('errlbl').innerHTML("Form not filled out correctly")
+    return;
+  }
+
+  var eve = [evname, evdate];
+
+  var username = localStorage.getItem("username");
+
+  db.get(username).then(function (doc) {
+  // update their document
+  doc.Events.push(eve);
+  // put them back
+  return db.put(doc);
+}).then(function () {
+  // fetch again
+  return db.get(username);
+}).then(function (doc) {
+  console.log(doc);
+  alert("Event saved");
+  document.getElementById('evname').value = "";
+  document.getElementById('months').selectedIndex = 0;
+  document.getElementById('days').selectedIndex = 0;
+  document.getElementById('years').selectedIndex = 0;
 
 });
 
@@ -489,7 +533,9 @@ function showCalendar(month, year) {
    });
    var goal = JSON.parse(localStorage.getItem("goals"));
    goals = goal.Goals;
+   var events = goal.Events;
    console.log(goals);
+   console.log(events);
 
     let firstDay = (new Date(year, month)).getDay();
 
@@ -544,6 +590,20 @@ function showCalendar(month, year) {
                   }
 
             }
+            for (var t = 0; t < events.length; t++) {
+              var evstring = events[t][1].split(" ");
+              var evmonth = dict[evstring[0]];
+              var evday = parseInt(evstring[1]);
+              var evyear = parseInt(evstring[2]);
+
+              if (date == evday && month == evmonth && year == evyear) {
+                console.log("correct");
+                cellText = document.createTextNode(date+ '\n'+events[t][0]);
+                cell.classList.add("bg-danger");
+                break;
+              }
+
+        }
 
                 cell.appendChild(cellText);
                 row.appendChild(cell);
