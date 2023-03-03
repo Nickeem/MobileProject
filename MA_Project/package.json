@@ -33,6 +33,6 @@
   "dependencies": {
     "cordova-android": "8.1.0",
     "cordova-browser": "^6.0.0",
-    "cordova.plugins.diagnostic": "5.0.2"
+    "cordova.plugins.diagnostic": "7.1.1"
   }
 }
